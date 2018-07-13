@@ -92,18 +92,6 @@ public class MakeReservation_1 {
         btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-//                rbv = new rButton();
-//                trainNum = rbv.getTn();
-//                tclass = rbv.getTclass();
-//                list.add(trainNum); //index 4: train number
-//                
-//                
-//                System.out.println("tn is " + trainNum);
-//                list.add(tclass); // index 5: class
-                //list.add(getTime(s1, trainNum)); // index 6: time
-                
-                //add data
-                //int position = 0;
                 for (int i = 0; i < s2.length; i++){
                     if (s2[i][1] == null){
                         position = i;
@@ -115,10 +103,7 @@ public class MakeReservation_1 {
                 time = getTime(s1, (String)s2[position][0]);
                 System.out.println("train: " + s2[position][0]);
                 System.out.println("time is " + time);
-//                s2[position][0] = trainNum; //index 0: train number
                   s2[position][1] = time; // index 1: time
-//                s2[position][4] = tclass; // index 4 : class
-//                s2[position][5] = rbv.getPrice(); // index 5: price
                 mrd.setReservationData(s2);
                 frame.dispose();
                 MakeReservation_2 mr2 = new MakeReservation_2(username, s1);
@@ -135,28 +120,13 @@ public class MakeReservation_1 {
         lblSelectDeparture.setBounds(165, 20, 120, 20);
         panel.add(lblSelectDeparture);
         String[] s = {"<html>Train<br/>(Train number)", "<html>Time<br/>(Duration)", "1st Class Price", "2nd Class Price"};       
-//        Object[][] s1 = {
-//              {"1", "1", new JRadioButton("1"), new JRadioButton("2")}
-//             
-//          };
-//        System.out.println(s1.length * 2);
-//        System.out.println(s1[0].length * 2);
+
         
       
         scrollPane = new JScrollPane();
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
         createTable(s1, s);
-//      
-//      
-//        String[] s = {"<html>Train<br/>(Train number)", "<html>Time<br/>(Duration)", "1st Class Price", "2nd Class Price"};
-//        Object[][] s1 = {
-//                {1, 1, 1, 1},
-//                {1, 1, 1 ,1}
-//        };
-//        table = new JTable(s1, s);
-//        table.setPreferredScrollableViewportSize(new Dimension(450, 280));
-//        table.setFillsViewportHeight(true);
-//        scrollPane.setViewportView(table);
+wportView(table);
       
      
         frame.setBounds(100, 100, 450, 400);
@@ -169,16 +139,14 @@ public class MakeReservation_1 {
         ButtonGroup bg = new ButtonGroup();
         Object[] s3 = new Object[s1.length];
         JRadioButton[] rb = new JRadioButton[s1.length * 2];
-//        System.out.println("s1 length: " + s1.length);
-//        System.out.println("rb length :" +  rb.length);
-        //int lengthR = 0;
+
 
         
         for (int i = 0; i < s1.length; i++){
             if (s1[i][2] == null){
                 break;
             }
-            //lengthR += 2;
+
             
             rb[count] = (JRadioButton)s1[i][2];
             bg.add(rb[count]);
@@ -192,63 +160,13 @@ public class MakeReservation_1 {
             rb[count].addItemListener(new rButton(s3[i], "second", rb[count].getText(), position));
             
             
-            
-            //System.out.println(rb[count]);
-            //s1[i][1] = rb[i];
+
         }
         
-        
-//        System.out.println("length R" + lengthR);
-//        JRadioButton[] rb1 = new JRadioButton[lengthR];
-//        System.out.println("rb1 length: " + rb1.length);
-//        count = 0;
-//        for (int i = 0; i < rb1.length / 2; i++){
-//            
-//            rb1[count++] = (JRadioButton)s1[i][2];
-//            bg.add(rb1[count - 1]);
-//            rb1[count++] = (JRadioButton)s1[i][3];
-//            bg.add(rb1[count - 1]);
-//        }
-//        
-//        for (int i = 0; i <  s3.length; i++){
-//            System.out.println(s3[i]);
-//        }
-//        
-//        
-//        
-//        count = 0;
-//        for (int i = 0; i <  rb1.length; i++){
-//            
-//            if (i % 2 == 0){
-//                System.out.println(count);
-//                rb1[i].addItemListener(new rButton(s3[count], "first", rb1[i].getText()));
-//                System.out.println(s3[count]+ "first" + rb1[i].getText());
-//            }else{
-//                rb1[i].addItemListener(new rButton(s3[count++], "second", rb1[i].getText()));
-//            }
-//        }
-        
-//        dtm = new DefaultTableModel(s1, s2);
-//        table = new JTable(dtm){
-//            public void tableChanged(TableModelEvent e){
-//                super.tableChanged(e);
-//                
-//                repaint();
-//            }
-//        };
+
         table  = new JTable(s1, s2);
         
-        //ButtonGroup bg = new ButtonGroup();
-        
-//        for (int i = 0; i< rb.length; i++){
-//            if (rb[i] == null){
-//                break;
-//            }
-//            System.out.println(rb[i]);
-//            bg.add(rb[i]);
-//        }
-       // table.getColumn("<html>Train<br/>(Train number)").setCellRenderer(new Radiorenderer());
-        //table.getColumn("<html>Train<br/>(Train number)").setCellEditor(new radioEditor(new JCheckBox()));
+  
         table.getColumn("1st Class Price").setCellRenderer(new Radiorenderer());
         table.getColumn("1st Class Price").setCellEditor(new radioEditor(new JCheckBox()));
         table.getColumn("2nd Class Price").setCellRenderer(new Radiorenderer());
@@ -329,98 +247,6 @@ public class MakeReservation_1 {
         return this.time;
     }
 
-//    /**
-//     * Launch the application.
-//     */
-//    public static void mrWindow_1() {
-//        EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    MakeReservation_1 window = new MakeReservation_1(list);
-//                    window.frame.setVisible(true);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Create the application.
-//     */
-//    public MakeReservation_1(ArrayList list) {
-//        this.username = (String)list.get(0);
-//        initialize();
-//    }
-//
-//    /**
-//     * Initialize the contents of the frame.
-//     */
-//    private void initialize() {
-//        frame = new JFrame();
-//        frame.getContentPane().setBackground(Color.WHITE);
-//        frame.getContentPane().setLayout(new BorderLayout(0, 0));
-//        
-//        JPanel panel = new JPanel();
-//        panel.setBackground(Color.WHITE);
-//        panel.setPreferredSize(new Dimension(450, 60));
-//        panel.setLayout(null);
-//        frame.getContentPane().add(panel, BorderLayout.NORTH);
-//        
-//        JPanel panel_1 = new JPanel();
-//        panel_1.setPreferredSize(new Dimension(450, 60));
-//        panel_1.setLayout(null);
-//        panel_1.setBackground(Color.WHITE);
-//        frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
-//        
-//        JButton btnNewButton = new JButton("Back");
-//        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//        btnNewButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                frame.dispose();
-//                MakeReservation mr = new MakeReservation(username);
-//                mr.mrWindow();
-//            }
-//        });
-//        btnNewButton.setBounds(80, 20, 100, 29);
-//        panel_1.add(btnNewButton);
-//        
-//        JButton btnNewButton_1 = new JButton("Next");
-//        btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//        btnNewButton_1.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                frame.dispose();
-//                MakeReservation_2 mr2 = new MakeReservation_2();
-//                mr2.mrWindow_2();
-//            }
-//        });
-//        btnNewButton_1.setBounds(270, 20, 100, 29);
-//        panel_1.add(btnNewButton_1);
-//        
-//        JLabel lblSelectDeparture = new JLabel("Select Departure");
-//        lblSelectDeparture.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-//
-//        lblSelectDeparture.setBounds(165, 20, 120, 20);
-//        panel.add(lblSelectDeparture);
-//        
-//        JScrollPane scrollPane = new JScrollPane();
-//        frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-//        
-//        
-//        String[] s = {"<html>Train<br/>(Train number)", "<html>Time<br/>(Duration)", "1st Class Price", "2nd Class Price"};
-//        Object[][] s1 = {
-//                {1, 1, 1, 1},
-//                {1, 1, 1 ,1}
-//        };
-//        table = new JTable(s1, s);
-//        table.setPreferredScrollableViewportSize(new Dimension(450, 280));
-//        table.setFillsViewportHeight(true);
-//        scrollPane.setViewportView(table);
-//        
-//       
-//        frame.setBounds(100, 100, 450, 400);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    }
 }
 
 
