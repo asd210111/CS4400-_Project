@@ -18,7 +18,7 @@ ALTER TABLE customer
 
 
 
-CREATE TABLE KEY paymentInfo(
+CREATE TABLE paymentInfo(
 	cardNum BIGINT PRIMARY KEY NOT NULL,
 	cvv INT NOT NULL,
 	expDate DATE NOT NULL,
